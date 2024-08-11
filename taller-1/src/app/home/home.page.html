@@ -1,0 +1,8 @@
+ <ion-list style="padding-left: 20px; font-weight: bold;" >
+      <ion-select (ionChange)="manejarSeleccionFigura($event)" label=" Figura Geometrica"  placeholder=" Escoja figura geométrica ">
+        <ion-select-option value="circulo">Círculo</ion-select-option>
+        <ion-select-option value="triangulo">Triángulo</ion-select-option>
+       </ion-select>
+      <app-circulo *ngIf="esCirculo()"></app-circulo>
+      <app-triangulo *ngIf="esTriangulo()"></app-triangulo>
+  </ion-list>
