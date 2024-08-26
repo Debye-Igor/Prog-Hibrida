@@ -1,0 +1,19 @@
+<ion-list lines="none">
+  <ion-card *ngFor="let quote of quotes">
+    <ion-card-content>
+      <ion-item>
+        <ion-label>
+          <ion-text>
+            <h2>{{ quote.text }}</h2>
+          </ion-text>
+          <ion-text>
+            <p style="text-align: right;"><i>{{ quote.autor }}</i></p>
+          </ion-text>
+        </ion-label>
+        <ion-button slot="end" fill="clear" (click)="deleteQuote(quote)">
+          <ion-icon name="trash-outline"></ion-icon>
+        </ion-button>
+      </ion-item>
+    </ion-card-content>
+  </ion-card>
+</ion-list>

@@ -1,0 +1,46 @@
+<ion-card color="light">
+  <ion-card-content>
+   <ion-item lines="none">
+    <ion-label position="fixed" style="padding-bottom: 10px;">Cita</ion-label>
+    <!-- Detalle y validacions de la cita-->
+    <ion-input 
+    [(ngModel)]="newQuote.text"  
+    name="text" 
+    placeholder="Escribe aquí la cita"
+    required="required"
+    minlength="5"
+    #citaInput="ngModel">
+  </ion-input>
+  </ion-item> 
+  <ion-item>
+    <ion-text color="danger" 
+    [hidden]="citaInput.valid || citaInput.pristine "> <!-- Manejo del error-->
+      La cita debe tener al menos 5 caracteres. <!-- Mensaje de error -->
+    </ion-text>
+  </ion-item>
+<!-- Detalle y validacions del autor-->
+  <ion-item lines="none">
+    <ion-label position="fixed" >Autor</ion-label>
+    <ion-input
+     [(ngModel)]="newQuote.autor" 
+     name="autor" 
+     placeholder="Nombre Autor"
+     required="required"
+     minlength="2"
+     #autorInput="ngModel"></ion-input>
+  </ion-item>
+
+  <ion-item>
+    <ion-text color="danger" 
+    [hidden]="autorInput.valid || autorInput.pristine "> <!-- Manejo del error-->
+      El nombre del autor debe tener al menos 2 caracteres. <!-- Mensaje de error-->
+    </ion-text>
+  </ion-item>
+
+</ion-card-content>
+
+  <ion-button  (click)="addQuote()" fill="clear" >
+    <ion-icon name="add-outline" slot="end" ></ion-icon>
+    Agregar
+  </ion-button>
+</ion-card>

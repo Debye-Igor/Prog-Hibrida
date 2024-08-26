@@ -1,0 +1,11 @@
+<ion-list lines="none">
+  <ion-item>
+    <ion-card color="light" *ngIf="randomQuote.text" >
+      <ion-card-content>
+        <h2 style="color: #3bb7e0;">{{ randomQuote.text }}</h2>
+        <p style="text-align: right;"><i>{{ randomQuote.autor }}</i></p>
+      </ion-card-content>
+    </ion-card>
+  </ion-item>
+</ion-list>
+
