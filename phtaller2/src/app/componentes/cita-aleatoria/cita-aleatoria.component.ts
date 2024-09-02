@@ -26,17 +26,17 @@ export class CitaAleatoriaComponent implements OnInit{
     )
    }
 
-   /* ionViewWillEnter(){
-    this.loadRandomQuote()
-  } */
-
-  ngOnInit() {
-    this.loadRandomQuote()
+  async ngOnInit() {
+    await this.loadRandomQuote()
   }
+
+   async ionViewWillEnter(){
+    await this.loadRandomQuote()
+  } 
   
-  loadRandomQuote(){
-    this.randomQuote = this.quoteService.getRandomQuote()
-    console.log()
+  async loadRandomQuote(){
+    this.randomQuote = await this.quoteService.getRandomQuote() || { text: '', autor: '' };
+    console.log(this.randomQuote);
     }
 
 }

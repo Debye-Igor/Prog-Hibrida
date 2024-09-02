@@ -37,6 +37,13 @@
     </ion-text>
   </ion-item>
 
+  <ion-item>
+    <ion-text color="success" *ngIf="mensaje">
+      {{ mensaje }}
+    </ion-text>
+  </ion-item>
+
+
 </ion-card-content>
 
   <ion-button  (click)="addQuote()" fill="clear" >

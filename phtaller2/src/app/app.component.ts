@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, CUSTOM_ELEMENTS_SCHEMA } from '@angular/core';
 import { IonApp, IonRouterOutlet } from '@ionic/angular/standalone';
 import { FormsModule } from '@angular/forms';
 
@@ -7,6 +7,7 @@ import { FormsModule } from '@angular/forms';
   templateUrl: 'app.component.html',
   standalone: true,
   imports: [FormsModule, IonApp, IonRouterOutlet],
+  schemas: [CUSTOM_ELEMENTS_SCHEMA]
 })
 export class AppComponent {
   constructor() {}

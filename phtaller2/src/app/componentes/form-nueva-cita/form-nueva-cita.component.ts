@@ -15,10 +15,12 @@ import { addOutline } from 'ionicons/icons';
   imports: [IonText, FormsModule, CommonModule, IonCard, IonItem, IonCardContent, IonInput, IonLabel, IonButton, IonIcon],
   
 })
+
 export class FormNuevaCitaComponent  implements OnInit {
 
   quotes: Quote[] = []
   newQuote: Quote = {text: '', autor: ''}
+  mensaje: string = ''
   
   constructor(private quoteService: QuoteService) {
     addIcons({
@@ -27,20 +29,24 @@ export class FormNuevaCitaComponent  implements OnInit {
  )
    }
 
-  ngOnInit() {}
-
-  loadAllQuotes(){
-    this.quotes = this.quoteService.getAllQuotes();
-    console.log("Citas cargadas:", this.quotes)
+  async ngOnInit() {
+   
   }
 
-  addQuote() {
-    console.log("Valores de newQuote:", this.newQuote);
-    if (this.newQuote.text && this.newQuote.autor) {
+ /* async loadAllQuotes(){
+    this.quotes = await this.quoteService.getAllQuotes()
+    console.log("Citas cargadas:", this.quotes)
+  }
+*/
+  async addQuote() {
+    console.log("Valores de nueva cita:", this.newQuote)
+    if (this.newQuote.text.length >= 5 && this.newQuote.autor.length >= 2)  {
       console.log("Agregando cita:", this.newQuote)
-      this.quoteService.addQuote(this.newQuote);
-      this.newQuote = { text: '', autor: '' }; //Para limpiar el formulario funcionando
-      this.loadAllQuotes();
+      await this.quoteService.addQuote(this.newQuote)
+      //this.newQuote = { text: '', autor: '' }; //Para limpiar el formulario funcionando
+      this.mensaje = 'Cita agregada'
+      
+  
     }
  }
 }

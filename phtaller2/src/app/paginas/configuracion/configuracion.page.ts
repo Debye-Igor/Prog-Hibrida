@@ -17,16 +17,16 @@ export class ConfiguracionPage implements OnInit {
 
   constructor(private configuracionCita: ConfiguracioCitaInicioService) { }
 
-  ngOnInit() {
-    // Carga el valor desde el servicio
-    this.permitirEliminar = this.configuracionCita.getPermitirEliminar();
+  async ngOnInit() {
+    // Carga el valor desde el servicio- funcion async y await
+    this.permitirEliminar = await this.configuracionCita.getPermitirEliminar();
   }
 
   // Maneja el cambio del switch
-  togglePermitirEliminar(event: any) {
+  async togglePermitirEliminar(event: any) {
     this.permitirEliminar = event.detail.checked;
     // Guarda el valor en el servicio
-    this.configuracionCita.setPermitirEliminar(this.permitirEliminar);
+    await this.configuracionCita.setPermitirEliminar(this.permitirEliminar);
   }
 
 }

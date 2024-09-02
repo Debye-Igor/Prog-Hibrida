@@ -28,8 +28,8 @@ export class HomePage  {
     }
     )
   }
-
-  ionViewWillEnter() {
-    this.mostrarCitaAleatoria = this.configuracionCita.getPermitirEliminar();
-}
+// modificamos con asyn y await para el guardado de las preferencias de configuracin
+  async ionViewWillEnter() {
+    this.mostrarCitaAleatoria = await this.configuracionCita.getPermitirEliminar();
+ }
 }

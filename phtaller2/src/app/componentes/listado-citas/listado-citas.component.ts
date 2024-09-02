@@ -5,6 +5,8 @@ import { QuoteService } from 'src/app/servicios/quote.service';
 import { CommonModule } from '@angular/common';
 import { addIcons } from 'ionicons';
 import { trashOutline } from 'ionicons/icons';
+import { RouterModule } from '@angular/router';
+
 
 @Component({
   selector: 'app-listado-citas',
@@ -13,7 +15,7 @@ import { trashOutline } from 'ionicons/icons';
   standalone: true,
   imports: [IonText, IonLabel, IonItem, IonIcon, IonButton, CommonModule, IonCardContent, IonCard, IonList]
 })
-export class ListadoCitasComponent  implements OnInit {
+export class ListadoCitasComponent {
 
   quotes: Quote[] = []
 
@@ -23,18 +25,24 @@ export class ListadoCitasComponent  implements OnInit {
     })
    }
 
-  ngOnInit() {
-    this.loadAllQuotes()
-
+   async ionViewWillEnter() {
+    await this.loadAllQuotes()
+  }
+  
+  async ngOnInit() {
+    await this.loadAllQuotes()
   }
   // Método para cargar todas las citas
-  loadAllQuotes(){
-    this.quotes = this.quoteService.getAllQuotes();
-    console.log("Citas cargadas:", this.quotes)
+  async loadAllQuotes() {
+    
+      this.quotes = await this.quoteService.getAllQuotes()
+      console.log('Citas cargadas:', this.quotes)
+    
   }
 
-  // Metodo para borrar cita
-  deleteQuote(quote: Quote){
-    this.quotes = this.quotes.filter(q => q !== quote)
+  // Método para borrar cita
+  async deleteQuote(quote: Quote) {
+      await this.quoteService.deleteQuote(quote.id!)
+      this.quotes = this.quotes.filter(q => q.id !== quote.id)
   }
 }

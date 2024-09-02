@@ -14,6 +14,7 @@ export class EditarCitasPage implements OnInit {
 
   constructor() {}
 
-  ngOnInit() { }
+  async ngOnInit() {}
+   
 
 }
