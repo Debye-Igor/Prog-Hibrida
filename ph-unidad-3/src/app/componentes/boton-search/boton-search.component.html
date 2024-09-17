@@ -1,0 +1,10 @@
+<ion-list>
+    <ion-item><ion-searchbar 
+        (ionInput)="buscar($event)" 
+        placeholder="Buscar aquí"
+        [debounce]="1000"></ion-searchbar>
+    </ion-item>
+        <ion-item>
+        <ion-label>{{ resultados }}</ion-label>
+    </ion-item>
+</ion-list>

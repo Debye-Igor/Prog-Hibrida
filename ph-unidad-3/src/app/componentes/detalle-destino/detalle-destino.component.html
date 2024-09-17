@@ -1,0 +1,16 @@
+<ion-content>
+  <ion-list>
+    <ion-card *ngFor="let destino of destinos">
+      <ion-item>
+        <ion-thumbnail slot="start">
+          <ion-img [src]="destino.imagen"></ion-img>
+        </ion-thumbnail>
+        <ion-label>
+          <h2>{{ destino.nombre }}</h2>
+          <h3><strong>{{ destino.pais }}</strong></h3>
+          <p>{{ destino.precio | currency: 'CLP':'symbol':'1.0-0' }}</p>
+        </ion-label>
+      </ion-item>
+    </ion-card>
+  </ion-list>
+</ion-content>
