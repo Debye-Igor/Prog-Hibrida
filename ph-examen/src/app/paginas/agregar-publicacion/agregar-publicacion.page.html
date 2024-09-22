@@ -1,0 +1,21 @@
+<ion-header [translucent]="true">
+  <ion-toolbar>
+    <ion-buttons slot="start">
+      <ion-back-button defaultHref="/inicio"></ion-back-button>
+    </ion-buttons>
+    <ion-title>Agregar Publicación</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-list 
+style= "display: flex;
+  flex-direction: column;
+  justify-content: flex-start; 
+  align-items: center; 
+  height: 100vh; 
+  padding: 20px;
+" >
+  <ion-item>
+    <app-formulario-publicacion (publicacionCreada)="agregarPublicacion($event)" ></app-formulario-publicacion>
+  </ion-item>
+</ion-list>

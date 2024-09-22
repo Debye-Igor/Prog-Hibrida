@@ -1,0 +1,54 @@
+ <ion-list lines="none"  style="border-radius: 15px;">
+    <form (ngSubmit)="guardarPublicacion()" #publicacionForm="ngForm" >
+      <!--Ingreso de titulo-->
+      <ion-item  >
+        <ion-label position="floating">Título</ion-label>
+        <ion-input [(ngModel)]="publicacion.titulo" 
+        name="titulo" 
+        required 
+        placeholder="Ingrese aquí"
+        minlength="5"
+        #titulo = "ngModel"></ion-input>
+      </ion-item>
+      
+      <ion-note *ngIf="titulo.invalid && (titulo.touched || publicacionForm.submitted)">   
+      <small *ngIf="titulo.errors?.['required']">El título es obligatorio.</small>
+        <small *ngIf="titulo.errors?.['minlength']">El título debe tener al menos 5 caracteres.</small>
+      </ion-note>
+  
+      <!-- Boton para foto -->
+      <ion-item >
+        <ion-button expand="full" (click)="tomarFoto()" color="dark">
+          <ion-icon slot="start" name="camera-outline"></ion-icon>
+          Fotografía
+        </ion-button>
+      </ion-item>
+
+      <!-- Mostrar imagen -->
+      <ion-item>
+      <ion-img [src]="publicacion.imagen" style="width: 100px; height: 100px;"></ion-img>
+    </ion-item>
+
+      <ion-note *ngIf="imagenObligatoriaError" >
+        <small>Es obligatorio cargar una imagen.</small>
+      </ion-note>
+      
+      <!--Descrición-->
+      <ion-item>
+        <ion-label position="floating">Descripción</ion-label>
+        <ion-textarea [(ngModel)]="publicacion.descripcion" 
+        name="descripcion" 
+        required
+        minlength="30"
+        #descripcion ="ngModel"></ion-textarea>
+      </ion-item>
+
+      <ion-note *ngIf="descripcion.invalid && (descripcion.touched || publicacionForm.submitted)"><small *ngIf="descripcion.errors?.['required']">La descripción es obligatoria.</small>
+        <small *ngIf="descripcion.errors?.['minlength']">La descripción debe tener al menos 20 caracteres.</small>
+      </ion-note>
+  
+      <ion-item>
+        <ion-button expand="block" type="submit" color="primary">Guardar</ion-button>
+      </ion-item>
+    </form>
+  </ion-list>

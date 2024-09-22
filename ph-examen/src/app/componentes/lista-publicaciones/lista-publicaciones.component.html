@@ -1,0 +1,27 @@
+
+<ion-content>
+  <ion-item *ngFor="let publicacion of publicaciones; let i = index" lines="none">
+    <!-- imagen -->
+    <ion-img slot="start" *ngIf="publicacion.imagen" [src]="'data:image/jpeg;base64,' + publicacion.imagen" 
+      style="width: 100px; height: 100px; margin-right: 15px;">
+    </ion-img>
+
+    <!-- titulo - descripcin - fecha  -->
+    <ion-label style="flex-grow: 1;">
+      <h3 style="font-weight: bold;">{{ publicacion.titulo }}</h3>
+      <p style="margin-bottom: 5px;">{{ publicacion.descripcion }}</p>
+      <p style="font-size: 12px; color: grey;">{{ publicacion.fecha | date:'yyyy-MM-dd' }}</p><!-- pipe dee la fecha -->
+    </ion-label>
+
+    <!-- Boton trash -->
+    <ion-icon name="trash" slot="end" (click)="setOpen(true,i)" color="danger" style="cursor: pointer;"></ion-icon>
+  </ion-item>
+</ion-content>
+
+<!-- Modal boton trash -->
+<ion-modal [isOpen]="isModalOpen">
+  <ng-template>
+    <app-modal-eliminar-publicacion
+    (confirmacionEliminacion)="eliminarPublicacion($event)"></app-modal-eliminar-publicacion>
+  </ng-template>
+</ion-modal> 
